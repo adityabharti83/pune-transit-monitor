@@ -1,14 +1,14 @@
-**# Pune Transit Schedule Analytics**
+# Pune Transit Schedule Analytics
 
 A data analytics project that transforms public PMPML GTFS schedule data into clean, validated, analysis-ready datasets and uses Python, SQL, and Power BI to understand Pune's scheduled transit network.
 
-The project focuses on **\*\*planned transit schedules\*\***, including route activity, stop coverage, scheduled service patterns, geographic distribution, and planned headways.
+The project focuses on \*\*planned transit schedules\*\*, including route activity, stop coverage, scheduled service patterns, geographic distribution, and planned headways.
 
-\> **\*\*Important:\*\*** This project analyzes scheduled GTFS data only. It does not measure real-time bus locations, actual delays, ridership, passenger demand, or service reliability.
+\> \*\*Important:\*\* This project analyzes scheduled GTFS data only. It does not measure real-time bus locations, actual delays, ridership, passenger demand, or service reliability.
 
 \---
 
-**## Project Overview**
+## Project Overview
 
 Pune's public transit schedule data is published in GTFS (General Transit Feed Specification) format. Although GTFS provides a standardized structure, the raw files contain multiple related tables and are not immediately convenient for analytical use.
 
@@ -66,7 +66,7 @@ Power BI Dashboard
 
 \`\`\`
 
-**## Problem Statement**
+## Problem Statement
 
 PMPML transit schedule information is available as raw GTFS files containing routes, stops, trips, stop times, and service calendars.
 
@@ -92,7 +92,7 @@ The project addresses questions such as:
 
 The goal is to transform the raw GTFS feed into reliable analytical datasets and use them to understand the structure and scheduled activity of Pune's transit network.
 
-**## Project Objectives**
+## Project Objectives
 
 The project aims to:
 
@@ -120,7 +120,7 @@ The project aims to:
 
 \- Document the complete analytical workflow.
 
-**## Data Source**
+## Data Source
 
 The project uses a public PMPML GTFS schedule feed covering Pune, Maharashtra.
 
@@ -132,13 +132,13 @@ The processed feed contains:
 
 \| :--- | :--- |
 
-\| **\*\*Routes\*\*** | 627 |
+\| \*\*Routes\*\* | 627 |
 
-\| **\*\*Stops\*\*** | 6,696 |
+\| \*\*Stops\*\* | 6,696 |
 
-\| **\*\*Trips\*\*** | 15,138 |
+\| \*\*Trips\*\* | 15,138 |
 
-\| **\*\*Scheduled Stop Visits\*\*** | 627,199 |
+\| \*\*Scheduled Stop Visits\*\* | 627,199 |
 
 The dataset contains approximately:
 
@@ -146,7 +146,7 @@ The dataset contains approximately:
 
 These figures describe the processed schedule feed and should not be interpreted as real-world passenger or operational performance.
 
-**## Project Architecture**
+## Project Architecture
 
 \`\`\`text
 
@@ -228,11 +228,11 @@ These figures describe the processed schedule feed and should not be interpreted
 
 \`\`\`
 
-**## Data Pipeline**
+## Data Pipeline
 
-**### 1. Data Ingestion**
+### 1. Data Ingestion
 
-**\*\*File:\*\*** \`scripts/download_data.py\`
+\*\*File:\*\* \`scripts/download_data.py\`
 
 The ingestion script downloads the pinned public GTFS ZIP and verifies the source before processing.
 
@@ -258,9 +258,9 @@ Required files include:
 
 This provides a reproducible starting point for the analytical pipeline.
 
-**### 2. Data Cleaning and Transformation**
+### 2. Data Cleaning and Transformation
 
-**\*\*File:\*\*** \`scripts/clean_data.py\`
+\*\*File:\*\* \`scripts/clean_data.py\`
 
 The cleaning pipeline performs the following operations:
 
@@ -290,7 +290,7 @@ The cleaning pipeline performs the following operations:
 
 \- Calculates planned headways between consecutive scheduled arrivals.
 
-**### GTFS Overnight Time Handling**
+### GTFS Overnight Time Handling
 
 One of the important technical challenges in the project is handling GTFS schedule times beyond 24:00:00.
 
@@ -310,7 +310,7 @@ The project preserves this information instead of treating the value as an inval
 
 This is important for correctly calculating overnight arrivals and scheduled headways.
 
-**## Cleaned Datasets**
+## Cleaned Datasets
 
 The pipeline generates the following analysis-ready files under \`data/cleaned/\`:
 
@@ -326,7 +326,7 @@ The pipeline generates the following analysis-ready files under \`data/cleaned/\
 
 \- \`transit_schedule_analysis_clean.csv\`
 
-**### Dataset descriptions**
+### Dataset descriptions
 
 \| Dataset | Purpose |
 
@@ -344,7 +344,7 @@ The pipeline generates the following analysis-ready files under \`data/cleaned/\
 
 \| \`transit_schedule_analysis_clean.csv\` | Combined analytical schedule dataset |
 
-**## SQLite Database**
+## SQLite Database
 
 The cleaned datasets are structured for relational analysis using SQLite.
 
@@ -378,23 +378,23 @@ The database supports analytical queries covering:
 
 The database is generated locally from the cleaned datasets.
 
-**## SQL Analysis**
+## SQL Analysis
 
 SQL analysis is maintained in \`sql/\`.
 
 The analysis covers questions such as:
 
-\- **\*\*Network metrics:\*\*** Total routes, total stops, total trips, total scheduled stop visits.
+\- \*\*Network metrics:\*\* Total routes, total stops, total trips, total scheduled stop visits.
 
-\- **\*\*Route analysis:\*\*** Trips per route, scheduled stop visits per route, route activity rankings.
+\- \*\*Route analysis:\*\* Trips per route, scheduled stop visits per route, route activity rankings.
 
-\- **\*\*Stop analysis:\*\*** Number of routes serving each stop, scheduled visits per stop, stop coverage rankings.
+\- \*\*Stop analysis:\*\* Number of routes serving each stop, scheduled visits per stop, stop coverage rankings.
 
-\- **\*\*Schedule analysis:\*\*** Planned headways, average/median scheduled gaps, route-level schedule characteristics.
+\- \*\*Schedule analysis:\*\* Planned headways, average/median scheduled gaps, route-level schedule characteristics.
 
 Window functions such as \`LAG()\` can be used to compare consecutive scheduled arrivals and calculate planned headways.
 
-**## Exploratory Data Analysis**
+## Exploratory Data Analysis
 
 The EDA notebook is located at \`eda/eda.ipynb\`.
 
@@ -402,19 +402,19 @@ The notebook uses Python, Pandas, Matplotlib, Seaborn, and Jupyter Notebook.
 
 The analysis includes:
 
-\- **\*\*Dataset Overview:\*\*** Dataset dimensions, record counts, data quality checks, missing values.
+\- \*\*Dataset Overview:\*\* Dataset dimensions, record counts, data quality checks, missing values.
 
-\- **\*\*Route Activity:\*\*** Scheduled trips by route, scheduled stop visits by route, high-activity routes.
+\- \*\*Route Activity:\*\* Scheduled trips by route, scheduled stop visits by route, high-activity routes.
 
-\- **\*\*Stop Activity:\*\*** Stops with highest route coverage, stops with highest scheduled visits.
+\- \*\*Stop Activity:\*\* Stops with highest route coverage, stops with highest scheduled visits.
 
-\- **\*\*Schedule Analysis:\*\*** Arrival-time distribution, planned headway statistics, time-of-day activity, overnight service.
+\- \*\*Schedule Analysis:\*\* Arrival-time distribution, planned headway statistics, time-of-day activity, overnight service.
 
-\- **\*\*Geographic Analysis:\*\*** Transit stop coordinates, geographic distribution of stops.
+\- \*\*Geographic Analysis:\*\* Transit stop coordinates, geographic distribution of stops.
 
-**## Key Findings**
+## Key Findings
 
-**### Network Size**
+### Network Size
 
 The processed PMPML schedule feed contains:
 
@@ -426,49 +426,49 @@ The processed PMPML schedule feed contains:
 
 \- 627,199 scheduled stop visits
 
-The average number of scheduled stop visits per trip is approximately **\*\*41.43\*\***.
+The average number of scheduled stop visits per trip is approximately \*\*41.43\*\*.
 
-**### Highest Scheduled Route Activity**
+### Highest Scheduled Route Activity
 
 The route numbers with the highest scheduled stop activity include:
 
-\- **\*\*Route 149:\*\*** 13,753 scheduled stop visits
+\- \*\*Route 149:\*\* 13,753 scheduled stop visits
 
-\- **\*\*Route 159:\*\*** 10,170 scheduled stop visits
+\- \*\*Route 159:\*\* 10,170 scheduled stop visits
 
-\- **\*\*Route 43:\*\*** 9,527 scheduled stop visits
+\- \*\*Route 43:\*\* 9,527 scheduled stop visits
 
 Route numbers can appear under multiple GTFS route_id values. Therefore, route-level analysis should preserve the underlying GTFS route definitions rather than assuming that every route number represents one unique record.
 
-**### Highest Route Coverage Stops**
+### Highest Route Coverage Stops
 
 Stops with the highest number of route records serving them include:
 
-\- **\*\*Swargate:\*\*** 96 routes serving stop, 2,519 scheduled visits
+\- \*\*Swargate:\*\* 96 routes serving stop, 2,519 scheduled visits
 
-\- **\*\*Pune Station Moledina Stand:\*\*** 79 routes serving stop, 2,101 scheduled visits
+\- \*\*Pune Station Moledina Stand:\*\* 79 routes serving stop, 2,101 scheduled visits
 
-\- **\*\*St Colony:\*\*** 79 routes serving stop, 1,893 scheduled visits
+\- \*\*St Colony:\*\* 79 routes serving stop, 1,893 scheduled visits
 
-\- **\*\*Bhapkar Petrol Pump:\*\*** 76 routes serving stop, 1,785 scheduled visits
+\- \*\*Bhapkar Petrol Pump:\*\* 76 routes serving stop, 1,785 scheduled visits
 
-\- **\*\*Income Tax Office:\*\*** 69 routes serving stop, 1,814 scheduled visits
+\- \*\*Income Tax Office:\*\* 69 routes serving stop, 1,814 scheduled visits
 
 Swargate has the highest number of distinct route records serving the stop in the processed dataset.
 
 This indicates high network connectivity in the schedule data, although route connectivity alone does not establish passenger demand or actual interchange behavior.
 
-**### Planned Headways**
+### Planned Headways
 
 The planned headway analysis shows:
 
-\- **\*\*25th Percentile:\*\*** 15 minutes
+\- \*\*25th Percentile:\*\* 15 minutes
 
-\- **\*\*Median:\*\*** 20 minutes
+\- \*\*Median:\*\* 20 minutes
 
-\- **\*\*75th Percentile:\*\*** 35 minutes
+\- \*\*75th Percentile:\*\* 35 minutes
 
-\- **\*\*90th Percentile:\*\*** 85 minutes
+\- \*\*90th Percentile:\*\* 85 minutes
 
 These values represent planned schedule gaps between consecutive scheduled arrivals.
 
@@ -482,23 +482,23 @@ They do not represent:
 
 \- Service reliability
 
-**### Scheduled Service by Time of Day**
+### Scheduled Service by Time of Day
 
 Scheduled stop visits are distributed as follows:
 
-\- **\*\*Midday:\*\*** 273,678 scheduled stop visits
+\- \*\*Midday:\*\* 273,678 scheduled stop visits
 
-\- **\*\*Evening Peak:\*\*** 128,009 scheduled stop visits
+\- \*\*Evening Peak:\*\* 128,009 scheduled stop visits
 
-\- **\*\*Morning Peak:\*\*** 105,732 scheduled stop visits
+\- \*\*Morning Peak:\*\* 105,732 scheduled stop visits
 
-\- **\*\*Night:\*\*** 102,711 scheduled stop visits
+\- \*\*Night:\*\* 102,711 scheduled stop visits
 
-\- **\*\*Early/Late:\*\*** 17,069 scheduled stop visits
+\- \*\*Early/Late:\*\* 17,069 scheduled stop visits
 
 Midday represents approximately 43.6% of scheduled stop visits in the processed feed.
 
-**### Overnight Service**
+### Overnight Service
 
 The feed contains:
 
@@ -510,7 +510,7 @@ The pipeline preserves these extended GTFS times correctly so that overnight sch
 
 \---
 
-**## Power BI Dashboard
+## Power BI Dashboard
 
 The project includes a streamlined three-page Power BI dashboard designed with a minimalist, professional analytics theme.
 
@@ -524,16 +524,16 @@ Stops & Schedule Analysis
 
 The design uses:
 
-- **Light background**
-- **Dark navy typography**
-- **Blue primary accent**
-- **White cards**
-- **Minimal borders**
-- **Consistent icons**
-- **Clear KPI hierarchy**
-- **Simple charts**
-- **Geographic visualization**
-- **Consistent navigation**
+- Light background
+- Dark navy typography
+- Blue primary accent
+- White cards
+- Minimal borders
+- Consistent icons
+- Clear KPI hierarchy
+- Simple charts
+- Geographic visualization
+- Consistent navigation
 
 The objective is to create a clean analytical interface rather than an overly decorative dashboard.
 
@@ -541,73 +541,73 @@ The objective is to create a clean analytical interface rather than an overly de
 
 ### Page 1 — Network Overview
 
-**Purpose:** The Network Overview page provides a high-level view of the Pune scheduled transit network. It answers what the overall scheduled PMPML network looks like.
+Purpose: The Network Overview page provides a high-level view of the Pune scheduled transit network. It answers what the overall scheduled PMPML network looks like.
 
-- **Filters:** Route, Direction
-- **KPI Cards:** Total Routes, Total Stops, Total Trips, Scheduled Stop Visits, Scheduled Visits per Trip, Overnight Scheduled Visits
-- **Visualizations:**
+- Filters: Route, Direction
+- KPI Cards: Total Routes, Total Stops, Total Trips, Scheduled Stop Visits, Scheduled Visits per Trip, Overnight Scheduled Visits
+- Visualizations:
 
-  - **Top 10 Routes by Scheduled Trips:** Horizontal bar chart showing routes with the highest number of scheduled trips.
+  - Top 10 Routes by Scheduled Trips: Horizontal bar chart showing routes with the highest number of scheduled trips.
 
-  - **Top 10 Routes by Scheduled Stop Visits:** Horizontal bar chart showing routes with the highest scheduled stop-visit volume.
+  - Top 10 Routes by Scheduled Stop Visits: Horizontal bar chart showing routes with the highest scheduled stop-visit volume.
 
-  - **Pune Bus Stop Network:** Geographic map showing the distribution of transit stops across Pune.
+  - Pune Bus Stop Network: Geographic map showing the distribution of transit stops across Pune.
 
-  - **Scheduled Activity by Time of Day:** Column chart showing scheduled stop visits across Early/Late, Morning Peak, Midday, Evening Peak, and Night.
+  - Scheduled Activity by Time of Day: Column chart showing scheduled stop visits across Early/Late, Morning Peak, Midday, Evening Peak, and Night.
 
-  - **Schedule Characteristics:** Compact analytical table showing Overnight Visit %, Maximum Headway, Minimum Headway, Median Headway, and Average Headway.
+  - Schedule Characteristics: Compact analytical table showing Overnight Visit %, Maximum Headway, Minimum Headway, Median Headway, and Average Headway.
 
-  - **Insight Panel:** Short contextual summary communicating the overall structure of the scheduled network.
+  - Insight Panel: Short contextual summary communicating the overall structure of the scheduled network.
 
-- **Current status:** Complete.
+- Current status: Complete.
 
 ---
 
 ### Page 2 — Route & Service Analysis
 
-**Purpose:** The Route & Service Analysis page focuses on scheduled route activity and directional patterns, answering how scheduled service is distributed across routes and directions.
+Purpose: The Route & Service Analysis page focuses on scheduled route activity and directional patterns, answering how scheduled service is distributed across routes and directions.
 
-- **Filters:** Route, Direction
-- **KPI Cards:** Total Trips, Trips per Route, Scheduled Stop Visits, Scheduled Visits per Trip, Routes with Scheduled Service
-- **Visualizations:**
+- Filters: Route, Direction
+- KPI Cards: Total Trips, Trips per Route, Scheduled Stop Visits, Scheduled Visits per Trip, Routes with Scheduled Service
+- Visualizations:
 
-  - **Top 10 Routes by Scheduled Trips:** Horizontal bar chart showing routes with the highest number of scheduled trips.
+  - Top 10 Routes by Scheduled Trips: Horizontal bar chart showing routes with the highest number of scheduled trips.
 
-  - **Top 10 Routes by Scheduled Stop Visits:** Horizontal bar chart showing routes with the highest scheduled stop-visit volume.
+  - Top 10 Routes by Scheduled Stop Visits: Horizontal bar chart showing routes with the highest scheduled stop-visit volume.
 
-  - **Scheduled Trips by Direction:** Donut chart showing the distribution of scheduled trips across direction IDs.
+  - Scheduled Trips by Direction: Donut chart showing the distribution of scheduled trips across direction IDs.
 
-  - **Route Coverage vs Scheduled Trips:** Scatter plot comparing scheduled trips with scheduled stop visits across routes.
+  - Route Coverage vs Scheduled Trips: Scatter plot comparing scheduled trips with scheduled stop visits across routes.
 
-  - **Scheduled Activity by Route (Top 10):** Stacked bar chart showing scheduled stop activity across Early/Late, Morning Peak, Midday, Evening Peak, and Night for the top routes.
+  - Scheduled Activity by Route (Top 10): Stacked bar chart showing scheduled stop activity across Early/Late, Morning Peak, Midday, Evening Peak, and Night for the top routes.
 
-  - **Insight Panel:** Concise analytical interpretation of route-level scheduled service distribution.
+  - Insight Panel: Concise analytical interpretation of route-level scheduled service distribution.
 
-- **Current status:** Complete.
+- Current status: Complete.
 
 ---
 
 ### Page 3 — Stops & Schedule Analysis
 
-**Purpose:** The Stops & Schedule Analysis page focuses on stop-level scheduled activity, network connectivity, service periods, and planned headways.
+Purpose: The Stops & Schedule Analysis page focuses on stop-level scheduled activity, network connectivity, service periods, and planned headways.
 
-- **Filters:** Route, Direction, Stop Name, Service Period
-- **KPI Cards:** Total Stops, Scheduled Stop Visits, Scheduled Visits per Stop, Average Headway, Median Headway, Overnight Scheduled Visits
-- **Visualizations:**
+- Filters: Route, Direction, Stop Name, Service Period
+- KPI Cards: Total Stops, Scheduled Stop Visits, Scheduled Visits per Stop, Average Headway, Median Headway, Overnight Scheduled Visits
+- Visualizations:
 
-  - **Pune Bus Stop Network:** Geographic map displaying the spatial distribution of scheduled transit stops.
+  - Pune Bus Stop Network: Geographic map displaying the spatial distribution of scheduled transit stops.
 
-  - **Top 10 Stops by Scheduled Stop Visits:** Horizontal bar chart showing stops with the highest scheduled stop-visit activity.
+  - Top 10 Stops by Scheduled Stop Visits: Horizontal bar chart showing stops with the highest scheduled stop-visit activity.
 
-  - **Scheduled Activity by Time of Day:** Column chart showing scheduled stop visits across Early/Late, Morning Peak, Midday, Evening Peak, and Night.
+  - Scheduled Activity by Time of Day: Column chart showing scheduled stop visits across Early/Late, Morning Peak, Midday, Evening Peak, and Night.
 
-  - **Headway Distribution:** Column chart grouping planned headway records into practical intervals from Under 5 minutes through 120+ minutes.
+  - Headway Distribution: Column chart grouping planned headway records into practical intervals from Under 5 minutes through 120+ minutes.
 
-  - **Top 10 Stops by Routes Served:** Horizontal bar chart showing stops served by the largest number of distinct route records.
+  - Top 10 Stops by Routes Served: Horizontal bar chart showing stops served by the largest number of distinct route records.
 
-  - **Stop & Schedule Insights:** Concise text panel summarizing key stop-level and schedule-level findings.
+  - Stop & Schedule Insights: Concise text panel summarizing key stop-level and schedule-level findings.
 
-- **Current status:** Complete.
+- Current status: Complete.
 
 ---
 
@@ -627,17 +627,17 @@ This keeps the report focused on the project's core questions without introducin
 
 ---
 
-## Dashboard Design Principles**
+## Dashboard Design Principles
 
-**### Color Theme**
+### Color Theme
 
-\- **\*\*Primary:\*\*** Navy / Dark Blue (\`#12243A\`)
+\- \*\*Primary:\*\* Navy / Dark Blue (\`#12243A\`)
 
-\- **\*\*Accent:\*\*** Bright Blue
+\- \*\*Accent:\*\* Bright Blue
 
-\- **\*\*Supporting:\*\*** Light Blue, White, Light Gray (\`#F7F9FC\`)
+\- \*\*Supporting:\*\* Light Blue, White, Light Gray (\`#F7F9FC\`)
 
-**### Layout**
+### Layout
 
 Each page uses:
 
@@ -655,7 +655,7 @@ Each page uses:
 
 \- Consistent spacing and alignment
 
-**### Navigation**
+### Navigation
 
 The left navigation contains:
 
@@ -669,7 +669,7 @@ The active page is highlighted using the primary blue accent. Each analytical pa
 
 \---
 
-**## Testing**
+## Testing
 
 Automated tests are located in \`tests/test_pipeline.py\`.
 
@@ -689,11 +689,11 @@ The tests cover:
 
 \- GTFS ZIP validation
 
-**\*\*Current test result:\*\*** \`5 passed\`
+\*\*Current test result:\*\* \`5 passed\`
 
 \---
 
-**## Project Structure**
+## Project Structure
 
 \`\`\`text
 
@@ -815,9 +815,9 @@ pune-transit-monitor/
 
 \---
 
-**## How to Run the Project**
+## How to Run the Project
 
-1\. **\*\*Clone the repository:\*\***
+1\. \*\*Clone the repository:\*\*
 
    \`\`\`bash
 
@@ -827,7 +827,7 @@ pune-transit-monitor/
 
    \`\`\`
 
-2\. **\*\*Create a virtual environment:\*\***
+2\. \*\*Create a virtual environment:\*\*
 
    \`\`\`bash
 
@@ -839,7 +839,7 @@ pune-transit-monitor/
 
    \`\`\`
 
-3\. **\*\*Install dependencies:\*\***
+3\. \*\*Install dependencies:\*\*
 
    \`\`\`bash
 
@@ -847,7 +847,7 @@ pune-transit-monitor/
 
    \`\`\`
 
-4\. **\*\*Download the GTFS feed:\*\***
+4\. \*\*Download the GTFS feed:\*\*
 
    \`\`\`bash
 
@@ -855,7 +855,7 @@ pune-transit-monitor/
 
    \`\`\`
 
-5\. **\*\*Run the cleaning pipeline:\*\***
+5\. \*\*Run the cleaning pipeline:\*\*
 
    \`\`\`bash
 
@@ -863,7 +863,7 @@ pune-transit-monitor/
 
    \`\`\`
 
-6\. **\*\*Run tests:\*\***
+6\. \*\*Run tests:\*\*
 
    \`\`\`bash
 
@@ -871,17 +871,17 @@ pune-transit-monitor/
 
    \`\`\`
 
-   *\*Expected result: 5 passed\**
+   *\*Expected result: 5 passed\
 
-7\. **\*\*Explore the EDA:\*\*** Open \`eda/eda.ipynb\`.
+7\. \*\*Explore the EDA:\*\* Open \`eda/eda.ipynb\`.
 
-8\. **\*\*Perform SQL analysis:\*\*** Use the SQLite database and SQL queries provided in \`sql/\`.
+8\. \*\*Perform SQL analysis:\*\* Use the SQLite database and SQL queries provided in \`sql/\`.
 
-9\. **\*\*Build or open the Power BI report:\*\*** Use the cleaned datasets and the Power BI implementation guide under \`powerbi/README.md\`.
+9\. \*\*Build or open the Power BI report:\*\* Use the cleaned datasets and the Power BI implementation guide under \`powerbi/README.md\`.
 
 \---
 
-**## Project Limitations**
+## Project Limitations
 
 This project is based on static GTFS schedule data. It does not measure:
 
@@ -909,7 +909,7 @@ Therefore, all schedule-related metrics should be interpreted as planned/schedul
 
 \---
 
-**## Future Scope**
+## Future Scope
 
 The project can be extended by combining static GTFS schedules with additional transportation datasets, such as:
 
@@ -927,19 +927,19 @@ Future analysis could then explore actual versus scheduled arrivals, on-time per
 
 \---
 
-**## Skills Demonstrated**
+## Skills Demonstrated
 
-\- **\*\*Data Engineering:\*\*** Python, Pandas, data ingestion, cleaning, validation, GTFS processing, transformation.
+\- \*\*Data Engineering:\*\* Python, Pandas, data ingestion, cleaning, validation, GTFS processing, transformation.
 
-\- **\*\*Data Analytics:\*\*** SQL, SQLite, Exploratory Data Analysis, statistical summaries, visualization, schedule analysis.
+\- \*\*Data Analytics:\*\* SQL, SQLite, Exploratory Data Analysis, statistical summaries, visualization, schedule analysis.
 
-\- **\*\*Business Intelligence:\*\*** Power BI, data modeling, DAX, KPI design, interactive filtering, dashboard design, geographic visualization.
+\- \*\*Business Intelligence:\*\* Power BI, data modeling, DAX, KPI design, interactive filtering, dashboard design, geographic visualization.
 
-\- **\*\*Software Engineering:\*\*** Pytest, automated testing, reproducible workflows, Git, GitHub, project documentation.
+\- \*\*Software Engineering:\*\* Pytest, automated testing, reproducible workflows, Git, GitHub, project documentation.
 
 \---
 
-**## Project Status
+## Project Status
 
 | Component | Status |
 | :--- | :--- |
@@ -961,7 +961,7 @@ Future analysis could then explore actual versus scheduled arrivals, on-time per
 
 ---
 
-## Final Objective**
+## Final Objective
 
 The final project aims to demonstrate an end-to-end data analytics workflow:
 
@@ -1005,13 +1005,13 @@ Power BI Dashboard
 
 The project demonstrates how raw public transportation data can be transformed into a structured analytical product that makes scheduled transit activity easier to understand.
 
-The final Power BI report presents this analysis through three connected views: **Network Overview**, **Route & Service Analysis**, and **Stops & Schedule Analysis**.
+The final Power BI report presents this analysis through three connected views: Network Overview, Route & Service Analysis, and Stops & Schedule Analysis.
 
 \---
 
-**## Author**
+## Author
 
-**\*\*Aditya Bharti\*\***  
+\*\*Aditya Bharti\*\*  
 
 Data Analytics | Python | SQL | Power BI  
 
